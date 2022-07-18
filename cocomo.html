@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Effort- Estimation</title>
+  <meta content="Effort estimation techniques" name="description">
+  <meta content="Effort" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Decrease-icon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Gp - v4.7.0
+  * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+
+
+</head>
+<style>
+
+     form{width: 50%; 
+     margin: auto; 
+     border: 4px solid rgb(57, 253, 221);
+      padding: 15px 8px; 
+      border-radius: 15px;
+      margin-bottom: 30px;
+      background-color: rgb(243, 229, 204);
+      }
+    
+    
+</style>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/Decrease-icon.png" alt="" class="img-fluid"></a> -->
+      <h1 class="logo me-auto me-lg-0"><a href="index.html">Effort. E<span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+    
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="#about" class="get-started-btn scrollto">Get Started</a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+          <h1>CALCULATE EFFORT USING COCOMO MODEL<span>.</span></h1>
+          <h2>Calculate effort using the best way</h2>
+        </div>
+      
+
+    </div>
+
+  </section><!-- End Hero -->
+
+
+  <div style="margin-top: 20px">
+    <h3 style="text-align:center;">-To Calculate effort through COCOMO Model you Need- </h3>
+
+</div>
+
+            <!-- FORM STARTS HERE -->
+<form>
+    <div class="form-group">
+      <label for="kloc">KLOC </label>
+      <input type="text" class="form-control" id="kloc"  placeholder="please enter the Kloc value"><br>
+    
+    
+
+    <button button type="button" class="btn btn-primary btn-lg btn-block"onclick="display()" >CALCULATE</button> <br><br>
+      
+</div>
+<div class="form-group">
+    <label for="type">TYPE </label>
+    <input type="text" class="form-control" id="type" placeholder="Type">
+  </div> <br>
+
+<div class="form-group">
+  <label for="effort">EFFORT </label>
+  <input type="text" class="form-control" id="effort" placeholder="Effort">
+</div>
+
+<br><div class="form-group">
+    <label for="development"> DEVELOPEMENT TIME </label>
+    <input type="text" class="form-control" id="development" placeholder="Developemnt time">
+  </div>
+
+  <br><div class="form-group">
+    <label for="staff_size"> AVERAGE STAFF SIZE </label>
+    <input type="text" class="form-control" id="staff_size" placeholder="Average staff size">
+  </div> <br>
+
+    <label for="productivity">PRODUCTIVITY  </label>
+    <input type="text"  class="form-control" id="productivity" placeholder="Productivity"> <br>
+</form>
+<!-- FORM ENDS HERE -->
+
+
+
+                        <!-- JAVA SCRIPT CODE FOR COCOMO  -->
+<script>
+ 
+ function display(){
+var k_loc;
+ k_loc=document.getElementById('kloc').value;
+var Effort;
+var Dev_time;
+var avg_staffSize;
+var productivity;
+if (k_loc >=2 && k_loc<=50)
+{
+    // COCOMO_Organic(k_loc);
+    Effort= 2.4*Math.pow(k_loc,1.05).toFixed(2);
+     Dev_time= 2.5 * Math.pow(Effort, 0.38).toFixed(2);
+
+        document.getElementById('type').value="ORGANIC";
+
+        document.getElementById('effort').value=Effort;
+        document.getElementById('development').value=Dev_time;
+
+        avg_staffSize= (Effort/Dev_time).toFixed(2);
+        productivity= (k_loc/Effort).toFixed(2);
+
+        document.getElementById('staff_size').value=avg_staffSize;
+        document.getElementById('productivity').value=productivity;
+}
+else if (k_loc >=50 && k_loc<=300)
+{
+         Effort= (3.0*Math.pow(k_loc,1.12)).toFixed(2);
+         Dev_time= (2.5 * Math.pow(Effort, 0.35)).toFixed(2);
+
+         document.getElementById('type').value="SEMI - DETACHED";
+
+       
+        document.getElementById('effort').value=Effort;
+        document.getElementById('development').value=Dev_time;
+
+        avg_staffSize= (Effort/Dev_time).toFixed(2);
+        productivity= (k_loc/Effort).toFixed(2);
+
+        document.getElementById('staff_size').value=avg_staffSize;
+        document.getElementById('productivity').value=productivity;
+}
+
+ else if (k_loc > 300)
+{
+    var Effort= (3.6*Math.pow(k_loc,1.20)).toFixed(2);
+        var Dev_time=(2.5 * Math.pow(Effort, 0.32)).toFixed(2);
+
+        document.getElementById('type').value="EMBEDDED";
+
+        document.getElementById('effort').value=Effort;
+        document.getElementById('development').value=Dev_time;
+
+        avg_staffSize= (Effort/Dev_time).toFixed(2);
+        productivity= (k_loc/Effort).toFixed(2);
+
+        document.getElementById('staff_size').value=avg_staffSize;
+        document.getElementById('productivity').value=productivity;
+}
+else {
+    System.out.println("PLEASE ENTER KLOC VALUES WITH IN THE GIVEN RANGES");}}
+
+
+
+
+
+//     function SLIM_total_lifeCycleEffort ()
+//  {
+
+//      var loc=document.getElementById('loc').value;
+//      var c=document.getElementById('c').value;
+//      var time=document.getElementById('time').value;
+
+//      var K = ((loc) * 3)/ (c*(time*4)/3)  ;
+
+//     //  document.getElementById("TOTAL LIFE CYCLE EFFORT IN WORKING YEARS: ");
+//     //  document.write("k = "+K);
+//      document.getElementById('result').value=K;
+//  }
+
+ // SLIM_total_lifeCycleEffort(3232,32,2);
+</script>
+
+
+
+
+  
+
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
